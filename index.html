@@ -6,7 +6,7 @@
 <p><a id="auth" class="btn" href="#">TikTokでログイン</a></p>
 <h3>状態</h3><div id="log">未連携</div>
 <script>
-const CK="awahgdaue30w0igv";const RU=location.origin+location.pathname.replace(/[^/]*$/,'');
+const CK=new URLSearchParams(location.search).get("ck")||localStorage.getItem("ck")||"awahgdaue30w0igv";if(new URLSearchParams(location.search).get("ck"))localStorage.setItem("ck",CK);const RU=location.origin+location.pathname.replace(/[^/]*$/,'');
 const log=m=>document.getElementById('log').textContent=m;
 function b64(a){return btoa(String.fromCharCode(...new Uint8Array(a))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');}
 async function sha256hex(s){const h=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return [...new Uint8Array(h)].map(b=>b.toString(16).padStart(2,'0')).join('');}
